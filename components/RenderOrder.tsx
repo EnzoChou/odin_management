@@ -1,9 +1,10 @@
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, Alert, Pressable } from "react-native";
 import React, { useState, useContext, useEffect } from 'react';
 import { OrderContext } from '@/components/contexts/OrderManager';
 import { useBuildCheckboxes } from "@/hooks/useBuildCheckBoxes";
 import Checkbox from 'expo-checkbox';
 import { RenderCheckBoxes } from "./RenderCheckBoxes";
+import { SingleOrderLongPressModal } from "./modals/SingleOrderLongPressModal";
 
 export const RenderSauceIcons = (props: {
     key: number
@@ -43,6 +44,7 @@ export const RenderSingleMeal = (props: {
     const [checkboxes, setCheckboxes] = useState<Checkbox[]>([]);
     useBuildCheckboxes(props['meal']['quantity'] || 0, checkboxes, setCheckboxes);
     let single_meal_all_portions = checkboxes.every(el => !!el.value);
+    const [menuModalVisible, setMenuModalVisible] = useState(false);
 
     useEffect(() => {
         let new_orders: order[] = orders.map((el, i) => {
@@ -71,42 +73,59 @@ export const RenderSingleMeal = (props: {
             setColor(singleOrderClassName + 'bg-yellow-100');
         }
     }, [props['meal']['status']]);
+
+    const onLongPressButton = () => {
+        // Alert.alert('You long-pressed the button!');
+        setMenuModalVisible(true);
+        // return 'a';
+    };
+
     return (
-        <View className="flex-auto rounded-lg pb-1">
-            {/* <TouchableOpacity
+        <Pressable
+            onLongPress={onLongPressButton}
+        >
+            <SingleOrderLongPressModal
+                open={menuModalVisible}
+                onClose={setMenuModalVisible}
+                checkboxes={checkboxes}
+                setAllCheckBoxesToDone={setCheckboxes}
+            />
+            <View className="flex-auto rounded-lg pb-1">
+                {/* <TouchableOpacity
                 onPress={logicalOnPress}
             > */}
-            <View className={orderColor}>
-                <View className="flex-col">
-                    <Text className='text-lg font-semibold'>
-                        {props['meal']['name']} - {props['meal']['quantity']}
-                    </Text>
-                    <FlatList
-                        className="p-1"
-                        data={checkboxes}
-                        renderItem={({ item }) => <RenderCheckBoxes item={item} checkboxes={checkboxes} setCheckboxes={setCheckboxes} />}
-                        horizontal={true}
-                    ></FlatList>
-                </View>
-                {!!props['meal']['add_on'] || props['meal']['add_on'] ?
-                    <View className="flex-row justify-between p-1">
-                        <View className="flex-row p-1">
-                            <FlatList
-                                // horizontal={true}
-                                data={(props['meal']['add_on'] || [])}
-                                renderItem={({ item, index }) => <RenderSauceIcons key={index} item={item} />}
-                            />
-                        </View>
-                        <View>
-                            <Text className='text-sm font-semibold p-1'>
-                                {!!props['meal']['description'] ? 'Description\n' + props['meal']['description'] : ''}
-                            </Text>
-                        </View>
-                    </View> : <></>}
+                <View className={orderColor}>
+                    <View className="flex-col">
+                        <Text className='text-lg font-semibold'>
+                            {props['meal']['name']} - {props['meal']['quantity']}
+                        </Text>
+                        <FlatList
+                            className="p-1"
+                            data={checkboxes}
+                            renderItem={({ item }) => <RenderCheckBoxes item={item} checkboxes={checkboxes} setCheckboxes={setCheckboxes} />}
+                            horizontal={true}
+                        ></FlatList>
+                    </View>
+                    {!!props['meal']['add_on'] || props['meal']['add_on'] ?
+                        <View className="flex-row justify-between p-1">
+                            <View className="flex-row p-1">
+                                <FlatList
+                                    // horizontal={true}
+                                    data={(props['meal']['add_on'] || [])}
+                                    renderItem={({ item, index }) => <RenderSauceIcons key={index} item={item} />}
+                                />
+                            </View>
+                            <View>
+                                <Text className='text-sm font-semibold p-1'>
+                                    {!!props['meal']['description'] ? 'Description\n' + props['meal']['description'] : ''}
+                                </Text>
+                            </View>
+                        </View> : <></>}
 
-            </View>
-            {/* </TouchableOpacity> */}
-        </View >);
+                </View>
+                {/* </TouchableOpacity> */}
+            </View >
+        </Pressable >);
 };
 
 export const RenderMeal = (props: {
