@@ -1,0 +1,413 @@
+[{
+    "_id": "0",
+    "indxex": 0,
+    "category": "Snack",
+    "label": "snack",
+    "meals": [
+        {
+        "_id": "0",
+        "index": 0,
+        "name": "Arachidi",
+        "label": "arachidi",
+        "price": "2.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": ""
+    }, {
+        "_id": "1",
+        "index": 1,
+        "name": "Rice Crackers",
+        "label": "ricecrackers",
+        "price": "2.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": ""
+    }, {
+        "_id": "2",
+        "index": 2,
+        "name": "Mais Tostato",
+        "label": "maistostato",
+        "price": "2.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": ""
+    }, {
+        "_id": "3",
+        "index": 3,
+        "name": "Patatine Crik-Crok",
+        "label": "patatinecrikcrok",
+        "price": "2.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": ""
+    }, {
+        "_id": "4",
+        "index": 4,
+        "name": "Olive",
+        "label": "olive",
+        "price": "2.50",
+        "add_on": [],
+        "tags": ["gluten free"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": ""
+    }, {
+        "_id": "5",
+        "index": 5,
+        "name": "Tarallini",
+        "label": "tarallini",
+        "price": "2.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": ""
+    }, {
+        "_id": "6",
+        "index": 6,
+        "name": "Tris Snack",
+        "label": "trissnack",
+        "price": "5.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Arachidi, Mais Tostato, Rice Crackers)"
+    }, {
+        "_id": "7",
+        "index": 7,
+        "name": "Mix Snack",
+        "label": "mixsnack",
+        "price": "9.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Arachidi, Crik Crok, Mais Tostato, Olive, Rice Crackers)"
+    }]
+}, {
+    "_id": "1",
+    "indxex": 1,
+    "category": "Panini",
+    "label": "panini",
+    "meals": [
+        {
+        "_id": "0",
+        "index": 0,
+        "name": "Odin Chicken",
+        "label": "odinchicken",
+        "price": "5.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger Pollo)"
+    }, {
+        "_id": "1",
+        "index": 1,
+        "name": "Odin Dog",
+        "label": "odindog",
+        "price": "5.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Wurstel)"
+    }, {
+        "_id": "2",
+        "index": 2,
+        "name": "Odin Burger",
+        "label": "odinburger",
+        "price": "5.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger 140g*)"
+    }, {
+        "_id": "3",
+        "index": 3,
+        "name": "Odin Veg",
+        "label": "odinveg",
+        "price": "5.50",
+        "add_on": [],
+        "tags": ["veggie"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger Veg Spinaci*)"
+    }, {
+        "_id": "4",
+        "index": 4,
+        "name": "Odin Burrito",
+        "label": "olive",
+        "price": "5.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Tortilla, Carne di Maiale*, Achiote, Spezie)"
+    }, {
+        "_id": "5",
+        "index": 5,
+        "name": "Odin Pulled Pork",
+        "label": "odinpulledpork",
+        "price": "6.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Pulled Pork*, Coleslaw, Salsa Barbecue)"
+    }, {
+        "_id": "6",
+        "index": 6,
+        "name": "Odin Cheese Burger",
+        "label": "odincheeseburger",
+        "price": "7.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger*, Pomodoro, Insalata, Cheddar)"
+    }, {
+        "_id": "7",
+        "index": 7,
+        "name": "Odin Cheese Chicken",
+        "label": "odincheesechicken",
+        "price": "7.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger* Pollo, Pomodoro, Insalata, Cheddar)"
+    }, {
+        "_id": "8",
+        "index": 8,
+        "name": "Odin Green Veg",
+        "label": "odingreenveg",
+        "price": "7.50",
+        "add_on": [],
+        "tags": ["veggie"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger Veg*, Pomodoro, Insalata, Cipolla fritta)"
+    }, {
+        "_id": "9",
+        "index": 9,
+        "name": "Odin Bacon Burger",
+        "label": "odinbaconburger",
+        "price": "8.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger*, Pomodoro, Insalata, Cheddar, Bacon*)"
+    }, {
+        "_id": "10",
+        "index": 10,
+        "name": "Odin Bacon Chicken",
+        "label": "odinbaconchicken",
+        "price": "8.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger Pollo*, Pomodoro, Insalata, Cheddar, Bacon*)"
+    }, {
+        "_id": "11",
+        "index": 11,
+        "name": "Odin Hot Burger",
+        "label": "odinhotburger",
+        "price": "8.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger*, Pomodoro, Insalata, Cheddar, Cipolla Fritta, Salsa Hot)"
+    }, {
+        "_id": "12",
+        "index": 12,
+        "name": "Odin Hot Chicken",
+        "label": "odinhotchicken",
+        "price": "8.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger Pollo*, Pomodoro, Insalata, Cheddar, Cipolla Fritta, Salsa Hot)"
+    }, {
+        "_id": "13",
+        "index": 13,
+        "name": "Odin Hot Green",
+        "label": "odinhotgreen",
+        "price": "8.00",
+        "add_on": [],
+        "tags": ["veggie"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Burger Veg*, Pomodoro, Insalata, Cipolla Fritta, Salsa Hot)"
+    }]
+}, {
+    "_id": "2",
+    "indxex": 2,
+    "category": "Sfizi",
+    "label": "sfizi",
+    "meals": [
+        {
+        "_id": "0",
+        "index": 0,
+        "name": "Nachos Medi",
+        "label": "nachosmedi",
+        "price": "4.00",
+        "add_on": [],
+        "tags": ["veggie"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": ""
+    }, {
+        "_id": "1",
+        "index": 1,
+        "name": "Nachos Grandi",
+        "label": "nachosgrandi",
+        "price": "6.50",
+        "add_on": [],
+        "tags": ["veggie"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": ""
+    }, {
+        "_id": "2",
+        "index": 2,
+        "name": "Polpettine Medie",
+        "label": "polpettinemedie",
+        "price": "4.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(5 pz*, Lattuga, Cipolla Fritta, Salse)"
+    }, {
+        "_id": "3",
+        "index": 3,
+        "name": "Polpettine Grandi",
+        "label": "polpettinegrandi",
+        "price": "6.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(9 pz*, Lattuga, Cipolla Fritta, Salse)"
+    }]
+}, {
+    "_id": "3",
+    "indxex": 3,
+    "category": "Insalate",
+    "label": "insalate",
+    "meals": [
+        {
+        "_id": "0",
+        "index": 0,
+        "name": "Odin Salad",
+        "label": "odinsalad",
+        "price": "5.00",
+        "add_on": [],
+        "tags": ["veggie", "gluten free"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Insalata, Pomodoro, Mais, Olive Nere)"
+    }, {
+        "_id": "1",
+        "index": 1,
+        "name": "Odin Mediterranean Salad",
+        "label": "odinmediterraneansalad",
+        "price": "6.50",
+        "add_on": [],
+        "tags": ["gluten free"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Insalata, Pomodoro, Mais, Mozzarella, Olive Nere)"
+    }, {
+        "_id": "2",
+        "index": 2,
+        "name": "Odin Chicken Salad",
+        "label": "odinchickensalad",
+        "price": "7.50",
+        "add_on": [],
+        "tags": ["gluten free"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "(Insalata, Pomodoro, Mais, Tagliata di Pollo*, Cipolla Fritta)"
+    }]
+}, {
+    "_id": "4",
+    "indxex": 4,
+    "category": "Dolci",
+    "label": "dolci",
+    "meals": [
+        {
+        "_id": "0",
+        "index": 0,
+        "name": "Waffle",
+        "label": "waffle",
+        "price": "4.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "Con Nutella/Cioccolato/Sciroppo d'acero/Caramello (1 pz*)"
+    }, {
+        "_id": "1",
+        "index": 1,
+        "name": "Pancake",
+        "label": "pancake",
+        "price": "4.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "Con Nutella/Cioccolato/Sciroppo d'acero/Caramello (2 pz*)"
+    }, {
+        "_id": "2",
+        "index": 2,
+        "name": "Brownie",
+        "label": "brownie",
+        "price": "5.00",
+        "add_on": [],
+        "tags": ["gluten free"],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "Con Gelato alla Crema o Panna (1 pz*)"
+    }, {
+        "_id": "3",
+        "index": 3,
+        "name": "Tortino al Cioccolato",
+        "label": "tortinoalcioccolato",
+        "price": "5.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "Con Gelato alla Crema o Panna (1 pz*)"
+    }]
+}, {
+    "_id": "5",
+    "indxex": 5,
+    "category": "Birre alla spina",
+    "label": "birreallaspina",
+    "meals": [
+        {
+        "_id": "0",
+        "index": 0,
+        "name": "Messina Vivace Piccola",
+        "label": "messinavivacepiccola",
+        "price": "3.50",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "Lager Italiana 4,5% (0.2l)"
+    }, {
+        "_id": "1",
+        "index": 1,
+        "name": "Messina Vivace Media",
+        "label": "messinavivacemedia",
+        "price": "5.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "Lager Italiana 4,5% (0.4l)"
+    }, {
+        "_id": "2",
+        "index": 2,
+        "name": "Erdinger Piccola",
+        "label": "erdingerpiccola",
+        "price": "4.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "Weiss tedesca 5,2% (0,2 lt)"
+    }, {
+        "_id": "3",
+        "index": 3,
+        "name": "Erdinger Media",
+        "label": "erdingermedia",
+        "price": "6.00",
+        "add_on": [],
+        "tags": [],
+        "created_at": "2024-10-03T07:00:00.000Z",
+        "description": "Weiss tedesca 5,2% (0,4 lt)"
+    }]
+}]
