@@ -182,7 +182,7 @@ export const EditObject = (props: {
     }
 };
 
-export const PropModal = (props: {
+export const PropMenuModal = (props: {
     open: boolean,
     onClose: React.Dispatch<React.SetStateAction<boolean>>,
     model: string
