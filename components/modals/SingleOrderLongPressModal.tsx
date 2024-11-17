@@ -21,7 +21,6 @@ export const SingleOrderLongPressModal = (props: {
     });
     props['setAllCheckBoxesToDone']([...tmp]);
     // }, []);
-    props['setAllCheckBoxesToDone']([]);
     props['onClose'](false);
     return;
   };
