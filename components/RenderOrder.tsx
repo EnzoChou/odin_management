@@ -5,6 +5,7 @@ import { useBuildCheckboxes } from "@/hooks/useBuildCheckBoxes";
 import Checkbox from 'expo-checkbox';
 import { RenderCheckBoxes } from "./RenderCheckBoxes";
 import { SingleOrderLongPressModal } from "./modals/SingleOrderLongPressModal";
+import * as Haptics from 'expo-haptics';
 
 export const RenderSauceIcons = (props: {
     key: number
@@ -64,7 +65,7 @@ export const RenderSingleMeal = (props: {
         return;
     }, [single_meal_all_portions]);
 
-    let singleOrderClassName = 'flex-auto p-1 justify-normal rounded-lg border-2 border-slate-600 ';
+    let singleOrderClassName = 'flex-auto justify-normal rounded-lg border-2 border-slate-600 ';
     const [orderColor, setColor] = useState(singleOrderClassName + "bg-yellow-100");
     useEffect(() => {
         if (props['meal']['status'] == 'done') {
@@ -77,24 +78,29 @@ export const RenderSingleMeal = (props: {
     const onLongPressButton = () => {
         // Alert.alert('You long-pressed the button!');
         setMenuModalVisible(true);
+        Haptics.notificationAsync(
+            Haptics.NotificationFeedbackType.Success
+        );
         // return 'a';
     };
 
     return (
-        <Pressable
-            onLongPress={onLongPressButton}
-        >
-            <SingleOrderLongPressModal
-                open={menuModalVisible}
-                onClose={setMenuModalVisible}
-                checkboxes={checkboxes}
-                setAllCheckBoxesToDone={setCheckboxes}
-            />
-            <View className="flex-auto rounded-lg pb-1">
-                {/* <TouchableOpacity
+        <View className="flex-auto rounded-lg pb-1">
+            {/* <TouchableOpacity
                 onPress={logicalOnPress}
             > */}
-                <View className={orderColor}>
+            <View className={orderColor}>
+                <Pressable
+                    // style={({ pressed }) => [{ backgroundColor: pressed ? 'darkgreen' : 'red' }]}
+                    // className="m-1 shadow-sm shadow-blue-500 rounded-lg"
+                    onLongPress={onLongPressButton}
+                >
+                    <SingleOrderLongPressModal
+                        open={menuModalVisible}
+                        onClose={setMenuModalVisible}
+                        checkboxes={checkboxes}
+                        setAllCheckBoxesToDone={setCheckboxes}
+                    />
                     <View className="flex-col">
                         <Text className='text-lg font-semibold'>
                             {props['meal']['name']} - {props['meal']['quantity']}
@@ -122,10 +128,10 @@ export const RenderSingleMeal = (props: {
                             </View>
                         </View> : <></>}
 
-                </View>
-                {/* </TouchableOpacity> */}
-            </View >
-        </Pressable >);
+                </Pressable >
+            </View>
+            {/* </TouchableOpacity> */}
+        </View >);
 };
 
 export const RenderMeal = (props: {
