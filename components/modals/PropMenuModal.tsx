@@ -1,11 +1,26 @@
-import { View, Text, Pressable, Modal, Alert, StyleSheet, TextInput, FlatList, Button } from 'react-native';
+import {
+    View,
+    Text,
+    Pressable,
+    Modal,
+    TextInput,
+    FlatList,
+    Button,
+    KeyboardAvoidingView,
+    TouchableWithoutFeedback,
+    Keyboard,
+    Platform,
+    ScrollView
+} from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { useForm, Controller, useController } from "react-hook-form";
+import { useForm, Controller, useController, useFieldArray, UseFieldArrayRemove } from "react-hook-form";
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 
 export const AddRemoveMeal = (props: {
-    meal: meal
+    meal: meal,
+    index: number,
+    remove: UseFieldArrayRemove
 }) => {
     const {
         register,
@@ -14,15 +29,31 @@ export const AddRemoveMeal = (props: {
         control,
         formState: { errors },
     } = useForm<meal>({ defaultValues: props['meal'] });
-
+    console.log('meal', props['meal']);
+    console.log('index', props['index']);
     const onSubmit = handleSubmit((data) => console.log(data));
 
     return (
-        <View className='pl-1'>
-            <View>
-                <Text>
-                    Name
-                </Text>
+        <View className='pl-1 pb-5'>
+            <View className='flex-row justify-between'>
+                <View>
+                    <Text className=''>
+                        Name - {props['index']}
+                    </Text>
+                </View>
+                <View className=''>
+                    <Pressable
+                        className='p-1'
+                        onPress={() => {
+                            // setMeals([...meals, { _id: '', name: '', price: 0 }])
+                            console.log('index to remove', props['index']);
+                            props['remove'](props['index']);
+                        }
+                        }
+                    >
+                        <TabBarIcon className='text-center' name='remove-circle-outline' size={24} />
+                    </Pressable>
+                </View>
             </View>
             <View className='bg-white rounded-lg'>
                 <Controller
@@ -47,7 +78,7 @@ export const AddRemoveMeal = (props: {
                     Description
                 </Text>
             </View>
-            <View className='bg-white rounded-lg'>
+            <View className='bg-white rounded-lg justify-around'>
                 <Controller
                     control={control}
                     rules={{
@@ -71,7 +102,7 @@ export const AddRemoveMeal = (props: {
                     Price
                 </Text>
             </View>
-            <View className='bg-white rounded-lg'>
+            <View className='bg-white rounded-lg justify-around'>
                 <Controller
                     control={control}
                     rules={{
@@ -120,13 +151,20 @@ export const EditObject = (props: {
         register,
         setValue,
         handleSubmit,
+        getValues,
         control,
         formState: { errors },
     } = useForm<menu_meal>({ defaultValues: props['savedObj'] });
 
+    const { fields, append, remove } = useFieldArray({
+        name: 'meals',
+        control
+    });
+
     const onSubmit = handleSubmit((data) => console.log(data));
 
-    const [meals, setMeals] = useState(props['savedObj']?.meals || []);
+    const [meals,
+        setMeals] = useState(props['savedObj']?.meals || []);
 
 
     switch (props['model']) {
@@ -141,7 +179,7 @@ export const EditObject = (props: {
                         <Text className='font-semibold'>
                             Category Name
                         </Text>
-                        <View className='bg-white rounded-lg'>
+                        <View className='bg-white rounded-lg justify-around'>
                             <Controller
                                 control={control}
                                 rules={{
@@ -162,20 +200,33 @@ export const EditObject = (props: {
                         </View>
                         {errors.category && <Text className='text-red-500'>This is required.</Text>}
                     </View>
-                    <View className='pl-1 rounded-lg border-4 border-red-300'>
+                    <View className='flex-1 pl-1 rounded-lg border-4 border-red-300'>
                         <View>
                             <Text className='font-semibold'>
                                 Meals
                             </Text>
                         </View>
-                        <FlatList
+                        {fields.map((item, index) => <AddRemoveMeal meal={item} key={item.id} index={index} remove={remove} />)}
+                        {/* <FlatList
                             data={meals}
                             renderItem={({ item }) => <AddRemoveMeal meal={item} />}
-                        />
+                        /> */}
+                        <View className='flex-auto'>
+                            <Pressable
+                                className='p-1'
+                                onPress={() =>
+                                    // setMeals([...meals, { _id: '', name: '', price: 0 }])
+                                    append({ _id: '', name: '', price: 0 })
+                                }
+                            >
+                                <TabBarIcon className='text-center' name='add-circle-outline' size={28} />
+                            </Pressable>
+                        </View>
                     </View>
-                    <Button title="Save" onPress={onSubmit} />
+                    <View className='p-1'>
+                        <Button title="Save" onPress={onSubmit} />
+                    </View>
                 </View>
-                // </View>
             );
         default:
             break;
@@ -200,64 +251,68 @@ export const PropMenuModal = (props: {
                     onRequestClose={() => {
                         props['onClose'](!props['open']);
                     }}>
-                    <View className='flex-1'>
-                        <Pressable className='flex-1'
-                            onPress={() => props['onClose'](!props['open'])}
-                        >
-                            <View className='flex-1 m-10 bg-yellow-200 border-2 border-yellow-600 rounded-t-lg'>
-                                <Pressable className='flex-1'
-                                >
-                                    <View className='flex-row-reverse'>
-                                        <View className='bg-yellow-100 p-1 rounded-full'>
-                                            <Pressable className='flex-auto m-1'
-                                                onPress={() => props['onClose'](!props['open'])}
-                                            >
-                                                <Text>X</Text>
-                                            </Pressable>
+                    <ScrollView
+                        automaticallyAdjustKeyboardInsets={true}
+                    >
+                        <View className='flex-1'>
+                            <Pressable className='flex-1'
+                                onPress={() => props['onClose'](!props['open'])}
+                            >
+                                <View className='flex-1 m-10 bg-yellow-200 border-2 border-yellow-600 rounded-t-lg'>
+                                    <Pressable className='flex-1'
+                                    >
+                                        <View className='flex-row-reverse'>
+                                            <View className='bg-yellow-100 p-1 rounded-full'>
+                                                <Pressable className='flex-auto m-1'
+                                                    onPress={() => props['onClose'](!props['open'])}
+                                                >
+                                                    <Text>X</Text>
+                                                </Pressable>
+                                            </View>
                                         </View>
-                                    </View>
-                                    <View className='flex-1'>
-                                        <Text className='text-center font-Norsebold text-2xl'> edit {props['model']}</Text>
-                                        <View className='m-2'>
-                                            <EditObject model={props['model']} savedObj={{
-                                                "_id": "4",
-                                                "index": 4,
-                                                "category": "Dolci",
-                                                "label": "dolci",
-                                                "meals": [
-                                                    {
-                                                        "_id": "0",
-                                                        "index": 0,
-                                                        "name": "Waffle",
-                                                        "label": "waffle",
-                                                        "price": 5,
-                                                        "add_on": [{
-                                                            key: 'nutella',
-                                                            name: 'Nutella',
-                                                            add: true
-                                                        }, {
-                                                            key: 'sciroppodacero',
-                                                            name: 'Sciroppo d\'acero',
-                                                            add: true
-                                                        }, {
-                                                            key: 'nutella',
-                                                            name: 'Nutella',
-                                                            add: true
-                                                        }, {
-                                                            key: 'caramello',
-                                                            name: 'Caramello',
-                                                            add: true
-                                                        }],
-                                                        "tags": [],
-                                                        "description": "Con Nutella/Cioccolato/Sciroppo d'acero/Caramello (1 pz*)"
-                                                    }]
-                                            }} />
+                                        <View className='flex-1'>
+                                            <Text className='text-center font-Norsebold text-2xl'> edit {props['model']}</Text>
+                                            <View className='m-2'>
+                                                <EditObject model={props['model']} savedObj={{
+                                                    "_id": "4",
+                                                    "index": 4,
+                                                    "category": "Dolci",
+                                                    "label": "dolci",
+                                                    "meals": [
+                                                        {
+                                                            "_id": "0",
+                                                            "index": 0,
+                                                            "name": "Waffle",
+                                                            "label": "waffle",
+                                                            "price": 5,
+                                                            "add_on": [{
+                                                                key: 'nutella',
+                                                                name: 'Nutella',
+                                                                add: true
+                                                            }, {
+                                                                key: 'sciroppodacero',
+                                                                name: 'Sciroppo d\'acero',
+                                                                add: true
+                                                            }, {
+                                                                key: 'nutella',
+                                                                name: 'Nutella',
+                                                                add: true
+                                                            }, {
+                                                                key: 'caramello',
+                                                                name: 'Caramello',
+                                                                add: true
+                                                            }],
+                                                            "tags": [],
+                                                            "description": "Con Nutella/Cioccolato/Sciroppo d'acero/Caramello (1 pz*)"
+                                                        }]
+                                                }} />
+                                            </View>
                                         </View>
-                                    </View>
-                                </Pressable>
-                            </View>
-                        </Pressable>
-                    </View>
+                                    </Pressable>
+                                </View>
+                            </Pressable>
+                        </View>
+                    </ScrollView>
                 </Modal>
             </SafeAreaView>
         </SafeAreaProvider>
