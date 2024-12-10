@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useBuildCheckboxes = (n: number, old_value: Checkbox[], setCheckBoxes: React.Dispatch<React.SetStateAction<Checkbox[]>>) => {
+export const useBuildCheckboxes = (n: number, old_value: Checkbox[], setCheckBoxes: React.Dispatch<React.SetStateAction<Checkbox[]>>): void => {
     // 
     // const [checkboxes, setCheckBoxes] = useState<Checkbox[]>([]);
     const createdCheckboxes: Checkbox[] = old_value;
