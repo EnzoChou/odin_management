@@ -4,3 +4,5 @@ type Checkbox = {
     value: boolean,
     disabled: boolean
 };
+
+type Api = Record<string, Record<string, any>>;
