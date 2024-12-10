@@ -4,6 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Logo from '@/assets/images/odin-logo.png';
 import CustomButton from "@/components/CustomButton";
 import { NativeWindStyleSheet } from "nativewind";
+import * as apis from '@/api';
+
+globalThis.apis = apis;
+console.log('apis', apis);
 
 NativeWindStyleSheet.setOutput({
   default: "native",
