@@ -485,6 +485,7 @@ export default async function (order?: order) : Promise<order[]> {
     });
 
     dummyOrderList.sort((a, b) => (b.simple_date || '') > (a.simple_date || '') ? -1 : 1);
+    await new Promise((resolve) => setTimeout(() => resolve(5), 3000));
     return dummyOrderList;
     // return true;
 };

@@ -9,22 +9,18 @@ const bar = () => {
   const ordersManager = useContext(OrderContext);
   const [refreshing, setRefreshing] = React.useState(false);
   // set up this useEffect
-  useEffect(() => {
-    if (refreshing) {
-      // do your heavy or asynchronous data fetching & update your state
-      // set the refreshing back to false
-      // const fakeOrders: order[] = [];
-      apis.orderRetrieve()
-        .then((res: order[]) => {
-          ordersManager['setOrders'](res);
-        })
-        .catch((error: unknown) => {
-
-        });
-
-      setRefreshing(false);
-    }
-  }, [refreshing]);
+    useEffect(() => {
+      if (refreshing) {
+        apis.orderRetrieve()
+          .then((res: order[]) => {
+            ordersManager['setOrders'](res);
+            setRefreshing(false);
+          })
+          .catch((error: unknown) => {
+            setRefreshing(false);
+          });
+      }
+    }, [refreshing]);
 
   return (
     <SafeAreaView className='flex-1'>
